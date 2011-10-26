@@ -97,7 +97,11 @@ public class PongActivity extends BaseGameActivity {
         scene.setOnAreaTouchTraversalFrontToBack();
         scene.setTouchAreaBindingEnabled(true);
 
-        scene.setOnSceneTouchListener(new PlayerControllerTouchListener(player1, player2, display));
+        boolean isNPC = true;
+		scene.setOnSceneTouchListener(new PlayerControllerTouchListener(player1, player2, display, isNPC));
+		if (isNPC) {
+			scene.registerUpdateHandler(new NPCController(player2, ball, 6));
+		}
 		scene.registerUpdateHandler(new BordersCollisionHandler(ball, display, scoreBoard));
         scene.registerUpdateHandler(new PlayerCollisionHandler(player1, player2, ball));
         
