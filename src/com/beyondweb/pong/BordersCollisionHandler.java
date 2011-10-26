@@ -20,20 +20,24 @@ public class BordersCollisionHandler implements IUpdateHandler {
 	public void onUpdate(float pSecondsElapsed) {
 		if (ball.getX() < 0) {
 			scoreBoard.playerOneGoal();
+			scoreBoard.playScoreSound();
 			ball.reset();
 		}
 		else if (ball.getX() > display.getWidth() - ball.getWidth()) {
 			scoreBoard.playerTwoGoal();
+			scoreBoard.playScoreSound();
 			ball.reset();
 		}
 			
 		if (ball.getY() < 10) {
 			ball.setPosition(ball.getX(), 10);
 			ball.setVelocityY(Math.abs(ball.getVelocityY()));
+			ball.playWallBumpSound();
 		} 
 		else if (ball.getY() > display.getHeight() - ball.getHeight() - 10) {
 			ball.setPosition(ball.getX(), display.getHeight() - ball.getHeight() - 10);
 			ball.setVelocityY(-Math.abs(ball.getVelocityY()));
+			ball.playWallBumpSound();
 		}
 	}
 

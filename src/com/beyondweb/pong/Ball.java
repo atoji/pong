@@ -1,5 +1,6 @@
 package com.beyondweb.pong;
 
+import org.anddev.andengine.audio.sound.Sound;
 import org.anddev.andengine.engine.handler.physics.PhysicsHandler;
 import org.anddev.andengine.entity.primitive.Rectangle;
 import org.anddev.andengine.entity.scene.Scene;
@@ -11,6 +12,8 @@ public class Ball{
 	private PhysicsHandler physicsHandler;
 	private Rectangle rectangle;
 	private Display display;
+	private Sound playerBumpSound;
+	private Sound wallBumpSound;
 	
 	public Ball(Display display) {
 		this.display = display;
@@ -71,5 +74,25 @@ public class Ball{
 			setVelocityX(-250);
 		}
 		setPosition(display.getWidth() / 2, display.getHeight() / 2);
+	}
+	
+	public void setPlayerBumpSound(Sound sound) {
+		this.playerBumpSound = sound;
+	}
+	
+	public void playPlayerBumpSound() {
+		if (playerBumpSound != null) {
+			playerBumpSound.play();
+		}
+	}
+
+	public void setWallBumpSound(Sound bumpSound) {
+		this.wallBumpSound = bumpSound;
+	}
+	
+	public void playWallBumpSound() {
+		if (wallBumpSound != null) {
+			wallBumpSound.play();
+		}
 	}
 }
