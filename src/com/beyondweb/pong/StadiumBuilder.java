@@ -14,13 +14,14 @@ public class StadiumBuilder {
 	}
 	
 	public void buildOn(Scene scene) {
-		scene.attachChild(new Rectangle(0, 0, display.getWidth(), 10));
-		scene.attachChild(new Rectangle(0, display.getHeight() - 10, display.getWidth(), 10));
+		int traceWidth = display.getWidth() / 64;
+		scene.attachChild(new Rectangle(0, 0, display.getWidth(), traceWidth));
+		scene.attachChild(new Rectangle(0, display.getHeight() - traceWidth, display.getWidth(), traceWidth));
 		
 		int currentHeight = 0;
 		while (currentHeight < display.getHeight()) {
-			scene.attachChild(new Rectangle(display.getWidth() / 2, currentHeight, 10, 10));
-			currentHeight += 20;
+			scene.attachChild(new Rectangle(display.getWidth() / 2, currentHeight, traceWidth, traceWidth));
+			currentHeight += traceWidth * 2;
 		}
 		
 	}

@@ -19,12 +19,12 @@ public class BordersCollisionHandler implements IUpdateHandler {
 	@Override
 	public void onUpdate(float pSecondsElapsed) {
 		if (ball.getX() < 0) {
-			scoreBoard.playerOneGoal();
+			scoreBoard.playerTwoGoal();
 			scoreBoard.playScoreSound();
 			ball.reset();
 		}
 		else if (ball.getX() > display.getWidth() - ball.getWidth()) {
-			scoreBoard.playerTwoGoal();
+			scoreBoard.playerOneGoal();
 			scoreBoard.playScoreSound();
 			ball.reset();
 		}

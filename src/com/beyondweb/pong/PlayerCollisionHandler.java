@@ -22,7 +22,7 @@ public class PlayerCollisionHandler implements IUpdateHandler {
 			} else {
 				ball.setVelocityY(-Math.abs((player1.getY() + ball.getWidth() * 2) - ball.getY()) * 6);
 			}
-			ball.setVelocityX(Math.abs(ball.getVelocityX()) + 20);
+			ball.setVelocityX(Math.abs(ball.getVelocityX()) * 11 / 10);
 			ball.playPlayerBumpSound();
 		} else if (player2.collidesWith(ball)) {
 			if (player2.getY() + ball.getHeight() * 2 < ball.getY()) {
@@ -30,7 +30,7 @@ public class PlayerCollisionHandler implements IUpdateHandler {
 			} else {
 				ball.setVelocityY(-Math.abs((player2.getY() + ball.getHeight() * 2) - ball.getY()) * 6);
 			}
-			ball.setVelocityX(-Math.abs(ball.getVelocityX()) - 20);
+			ball.setVelocityX(-Math.abs(ball.getVelocityX()) * 11 / 10);
 			ball.playPlayerBumpSound();
 		}
 	}

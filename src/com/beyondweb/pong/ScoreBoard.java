@@ -20,19 +20,22 @@ public class ScoreBoard {
 	public ScoreBoard(Player player1, Player player2, Display display, Font font) {
 		this.player1 = player1;
 		this.player2 = player2;
-		player1ScoreText = new ChangeableText(display.getWidth() / 2 - (font.getLineHeight() * 30) / 20, 10, font, "0");
-		player2ScoreText = new ChangeableText(display.getWidth() / 2 + (font.getLineHeight() * 10) / 20, 10, font, "0");
+		int padding = display.getWidth() / 80;
+		player1ScoreText = new ChangeableText(display.getWidth() / 2 - (font.getLineHeight() * 30) / 20, padding, font, "0");
+		player2ScoreText = new ChangeableText(display.getWidth() / 2 + (font.getLineHeight() * 10) / 20 + padding, padding, font, "0");
 	}
 	
 	public void playerOneGoal() {
 		player1.increaseScore();
-		player1ScoreText.setText("" + player1.getScore());
+		if (player1.getScore() > 9) gameOver();
+		else player1ScoreText.setText("" + player1.getScore());
 		
 	}
 	
 	public void playerTwoGoal() {
 		player2.increaseScore();
-		player2ScoreText.setText("" + player2.getScore());
+		if (player2.getScore() > 9) gameOver();
+		else player2ScoreText.setText("" + player2.getScore());
 	}
 
 	public void attachTo(Scene scene) {
@@ -48,5 +51,12 @@ public class ScoreBoard {
 		if (scoreSound != null) {
 			scoreSound.play();
 		}
+	}
+	
+	private void gameOver() {
+		player1.resetScore();
+		player2.resetScore();
+		player1ScoreText.setText("" + player1.getScore());
+		player2ScoreText.setText("" + player2.getScore());
 	}
 }

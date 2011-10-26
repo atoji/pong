@@ -8,7 +8,12 @@ import android.view.Display;
 public class Player1 extends Player {
 
 	public Player1(Display display) {
-		setRectangle(new Rectangle(100, display.getHeight() / 2 - 50, 20, 100));
+		int width = display.getWidth() / 42;
+		int height = display.getHeight() / 5;
+		int x = display.getWidth() / 8;
+		int y = display.getHeight() / 2 - height / 2;
+		
+		setRectangle(new Rectangle(x, y, width, height));
 	}
 
 }

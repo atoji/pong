@@ -58,7 +58,7 @@ public class PongActivity extends BaseGameActivity {
 	public void onLoadResources() {
 		this.atariFontTexture = new BitmapTextureAtlas(256, 256, TextureOptions.BILINEAR_PREMULTIPLYALPHA);
 		FontFactory.setAssetBasePath("font/");
-		this.atariFont = FontFactory.createFromAsset(this.atariFontTexture, this, "atari.ttf", 50, true, Color.WHITE);
+		this.atariFont = FontFactory.createFromAsset(this.atariFontTexture, this, "atari.ttf", display.getWidth() / 16, true, Color.WHITE);
 		
 		SoundFactory.setAssetBasePath("mfx/");
 		try {

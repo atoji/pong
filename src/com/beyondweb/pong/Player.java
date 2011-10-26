@@ -48,4 +48,8 @@ public abstract class Player {
 		this.score++;
 	}
 
+	public void resetScore() {
+		this.score = 0;
+	}
+
 }

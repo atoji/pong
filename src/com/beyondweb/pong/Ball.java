@@ -14,12 +14,16 @@ public class Ball{
 	private Display display;
 	private Sound playerBumpSound;
 	private Sound wallBumpSound;
+	private int startSpeed;
 	
 	public Ball(Display display) {
+		int radius = display.getWidth() / 42;
+		startSpeed = display.getWidth() / 3;
+
 		this.display = display;
-		this.rectangle = new Rectangle(display.getWidth() / 2, display.getHeight() / 2, 20, 20);
+		this.rectangle = new Rectangle(display.getWidth() / 2, display.getHeight() / 2, radius, radius);
 		this.physicsHandler = new PhysicsHandler(rectangle);
-		this.physicsHandler.setVelocity(250, 250);
+		this.physicsHandler.setVelocity(startSpeed, startSpeed);
 		this.rectangle.registerUpdateHandler(physicsHandler);
 	}
 
@@ -69,9 +73,9 @@ public class Ball{
 
 	public void reset() {
 		if (getX() < display.getWidth() / 2) { 
-			setVelocityX(250);
+			setVelocityX(startSpeed);
 		} else {
-			setVelocityX(-250);
+			setVelocityX(-startSpeed);
 		}
 		setPosition(display.getWidth() / 2, display.getHeight() / 2);
 	}
