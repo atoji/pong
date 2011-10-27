@@ -1,6 +1,9 @@
-package com.beyondweb.pong;
+package com.beyondweb.pong.handlers;
 
 import org.anddev.andengine.engine.handler.IUpdateHandler;
+
+import com.beyondweb.pong.model.Ball;
+import com.beyondweb.pong.model.ScoreBoard;
 
 import android.view.Display;
 
@@ -19,12 +22,12 @@ public class BordersCollisionHandler implements IUpdateHandler {
 	@Override
 	public void onUpdate(float pSecondsElapsed) {
 		if (ball.getX() < 0) {
-			scoreBoard.playerTwoGoal();
+			scoreBoard.playerOneGoal();
 			scoreBoard.playScoreSound();
 			ball.reset();
 		}
 		else if (ball.getX() > display.getWidth() - ball.getWidth()) {
-			scoreBoard.playerOneGoal();
+			scoreBoard.playerTwoGoal();
 			scoreBoard.playScoreSound();
 			ball.reset();
 		}

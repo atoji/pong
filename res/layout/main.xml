@@ -1,12 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical" >
-
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/hello" />
-
+    
+    <Button
+        android:id="@+id/player"
+        android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    	android:text="Player VS Player" 
+    />
+    
+    <Button 
+        android:id="@+id/easy"
+        android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    	android:text="Player VS Easy NPC" 
+    />
+    
+    <Button 
+        android:id="@+id/medium"
+        android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    	android:text="Player VS Medium NPC" 
+    />
+    
+    <Button 
+        android:id="@+id/hard"
+        android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    	android:text="Player VS Hard NPC" 
+    />
+    
 </LinearLayout>

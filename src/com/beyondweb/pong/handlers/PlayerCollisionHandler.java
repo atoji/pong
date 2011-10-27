@@ -1,6 +1,9 @@
-package com.beyondweb.pong;
+package com.beyondweb.pong.handlers;
 
 import org.anddev.andengine.engine.handler.IUpdateHandler;
+
+import com.beyondweb.pong.model.Ball;
+import com.beyondweb.pong.model.Player;
 
 public class PlayerCollisionHandler implements IUpdateHandler {
 
@@ -22,7 +25,7 @@ public class PlayerCollisionHandler implements IUpdateHandler {
 			} else {
 				ball.setVelocityY(-Math.abs((player1.getY() + ball.getWidth() * 2) - ball.getY()) * 6);
 			}
-			ball.setVelocityX(Math.abs(ball.getVelocityX()) * 11 / 10);
+			ball.setVelocityX(-Math.abs(ball.getVelocityX()) * 11 / 10);
 			ball.playPlayerBumpSound();
 		} else if (player2.collidesWith(ball)) {
 			if (player2.getY() + ball.getHeight() * 2 < ball.getY()) {
@@ -30,7 +33,7 @@ public class PlayerCollisionHandler implements IUpdateHandler {
 			} else {
 				ball.setVelocityY(-Math.abs((player2.getY() + ball.getHeight() * 2) - ball.getY()) * 6);
 			}
-			ball.setVelocityX(-Math.abs(ball.getVelocityX()) * 11 / 10);
+			ball.setVelocityX(Math.abs(ball.getVelocityX()) * 11 / 10);
 			ball.playPlayerBumpSound();
 		}
 	}

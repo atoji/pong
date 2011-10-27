@@ -1,4 +1,4 @@
-package com.beyondweb.pong;
+package com.beyondweb.pong.activities;
 
 import java.io.IOException;
 
@@ -18,6 +18,17 @@ import org.anddev.andengine.opengl.texture.TextureOptions;
 import org.anddev.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlas;
 import org.anddev.andengine.ui.activity.BaseGameActivity;
 
+import com.beyondweb.pong.handlers.BordersCollisionHandler;
+import com.beyondweb.pong.handlers.NPCController;
+import com.beyondweb.pong.handlers.PlayerCollisionHandler;
+import com.beyondweb.pong.listeners.PlayerControllerTouchListener;
+import com.beyondweb.pong.model.Ball;
+import com.beyondweb.pong.model.Player;
+import com.beyondweb.pong.model.Player2;
+import com.beyondweb.pong.model.Player1;
+import com.beyondweb.pong.model.ScoreBoard;
+import com.beyondweb.pong.model.StadiumBuilder;
+
 import android.graphics.Color;
 import android.util.Log;
 import android.view.Display;
@@ -28,8 +39,8 @@ public class PongActivity extends BaseGameActivity {
 	private Camera camera;
 	private Ball ball;
 	private Display display;
-	private Player player1;
 	private Player player2;
+	private Player player1;
 	private ScoreBoard scoreBoard;
 	private BitmapTextureAtlas atariFontTexture;
 	private Font atariFont;
@@ -85,7 +96,7 @@ public class PongActivity extends BaseGameActivity {
         ball.attachTo(scene);
 
         player1 = new Player1(display);
-		player1.attachTo(scene);
+        player1.attachTo(scene);
         
         player2 = new Player2(display);
         player2.attachTo(scene);
@@ -97,10 +108,10 @@ public class PongActivity extends BaseGameActivity {
         scene.setOnAreaTouchTraversalFrontToBack();
         scene.setTouchAreaBindingEnabled(true);
 
-        boolean isNPC = true;
+        boolean isNPC = getIntent().getExtras().getBoolean("isNPC");
 		scene.setOnSceneTouchListener(new PlayerControllerTouchListener(player1, player2, display, isNPC));
 		if (isNPC) {
-			scene.registerUpdateHandler(new NPCController(player2, ball, 6));
+			scene.registerUpdateHandler(new NPCController(player2, ball, getIntent().getExtras().getInt("dificulty")));
 		}
 		scene.registerUpdateHandler(new BordersCollisionHandler(ball, display, scoreBoard));
         scene.registerUpdateHandler(new PlayerCollisionHandler(player1, player2, ball));

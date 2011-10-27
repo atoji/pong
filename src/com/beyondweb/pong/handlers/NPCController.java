@@ -1,6 +1,9 @@
-package com.beyondweb.pong;
+package com.beyondweb.pong.handlers;
 
 import org.anddev.andengine.engine.handler.IUpdateHandler;
+
+import com.beyondweb.pong.model.Ball;
+import com.beyondweb.pong.model.Player;
 
 public class NPCController implements IUpdateHandler {
 

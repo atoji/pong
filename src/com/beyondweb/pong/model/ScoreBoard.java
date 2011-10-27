@@ -1,9 +1,10 @@
-package com.beyondweb.pong;
+package com.beyondweb.pong.model;
 
 import org.anddev.andengine.audio.sound.Sound;
 import org.anddev.andengine.entity.scene.Scene;
 import org.anddev.andengine.entity.text.ChangeableText;
 import org.anddev.andengine.opengl.font.Font;
+
 
 import android.view.Display;
 
@@ -21,8 +22,8 @@ public class ScoreBoard {
 		this.player1 = player1;
 		this.player2 = player2;
 		int padding = display.getWidth() / 80;
-		player1ScoreText = new ChangeableText(display.getWidth() / 2 - (font.getLineHeight() * 30) / 20, padding, font, "0");
-		player2ScoreText = new ChangeableText(display.getWidth() / 2 + (font.getLineHeight() * 10) / 20 + padding, padding, font, "0");
+		player1ScoreText = new ChangeableText(display.getWidth() / 2 + (font.getLineHeight() * 10) / 20 + padding, padding, font, "0");
+		player2ScoreText = new ChangeableText(display.getWidth() / 2 - (font.getLineHeight() * 30) / 20, padding, font, "0");
 	}
 	
 	public void playerOneGoal() {

@@ -1,4 +1,4 @@
-package com.beyondweb.pong;
+package com.beyondweb.pong.model;
 
 import org.anddev.andengine.entity.primitive.Rectangle;
 import org.anddev.andengine.entity.scene.Scene;
