@@ -12,21 +12,21 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" 
         android:theme="@android:style/Theme.NoTitleBar.Fullscreen" 
-        android:screenOrientation="landscape">
+    >
         
-        <activity android:name=".activities.StartActivity" >
+        <activity android:name=".activities.StartActivity" android:screenOrientation="landscape">
             <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         
-        <activity android:name=".activities.PongActivity" >
+        <activity android:name=".activities.PongActivity" android:screenOrientation="landscape" >
             <intent-filter >
             </intent-filter>
         </activity>
         
-        <activity android:name=".activities.GameOverActivity" >
+        <activity android:name=".activities.GameOverActivity" android:screenOrientation="landscape">
             <intent-filter >
             </intent-filter>
         </activity>    

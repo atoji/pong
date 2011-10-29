@@ -3,5 +3,15 @@
 
     <string name="hello">Hello World!</string>
     <string name="app_name">Pong</string>
+    <string name="not_support_multitouch">Your device do not support multitouch</string>
+    <string name="yes">Yes!</string>
+    <string name="no">No</string>
+    <string name="player_wins">Player %d wins!</string>
+    <string name="play_again">Play again?</string>
+    <string name="player_vs_player">Player VS Player</string>
+    <string name="player_vs_easy_npc">Player VS Easy NPC</string>
+    <string name="player_vs_medium_npc">Player VS Medium NPC</string>
+    <string name="player_vs_hard_npc">Player VS Hard NPC</string>
+    <string name="pong">PONG</string>
 
 </resources>

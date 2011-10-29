@@ -5,32 +5,41 @@
     android:orientation="vertical" 
     android:paddingTop="10dp">
     
+    <TextView 
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    	android:textSize="30sp"
+    	android:text="@string/pong" 
+    	android:typeface="monospace"
+    />
+    
     <Button
         android:id="@+id/player"
         android:layout_width="match_parent"
     	android:layout_height="wrap_content"
-    	android:text="Player VS Player" 
+    	android:text="@string/player_vs_player" 
     />
     
     <Button 
         android:id="@+id/easy"
         android:layout_width="match_parent"
     	android:layout_height="wrap_content"
-    	android:text="Player VS Easy NPC" 
+    	android:text="@string/player_vs_easy_npc" 
     />
     
     <Button 
         android:id="@+id/medium"
         android:layout_width="match_parent"
     	android:layout_height="wrap_content"
-    	android:text="Player VS Medium NPC" 
+    	android:text="@string/player_vs_medium_npc" 
     />
     
     <Button 
         android:id="@+id/hard"
         android:layout_width="match_parent"
     	android:layout_height="wrap_content"
-    	android:text="Player VS Hard NPC" 
+    	android:text="@string/player_vs_hard_npc" 
     />
     
 </LinearLayout>

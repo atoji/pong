@@ -6,7 +6,10 @@ import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.beyondweb.pong.R;
 
@@ -17,14 +20,20 @@ public class GameOverActivity extends Activity {
 		
 		setContentView(R.layout.main);
 		
+		((TextView) findViewById(R.id.title)).setTypeface(Typeface.createFromAsset(getAssets(), "font/atari.ttf"));
+		((Button) findViewById(R.id.player)).setTypeface(Typeface.createFromAsset(getAssets(), "font/atari.ttf"));
+		((Button) findViewById(R.id.easy)).setTypeface(Typeface.createFromAsset(getAssets(), "font/atari.ttf"));
+		((Button) findViewById(R.id.medium)).setTypeface(Typeface.createFromAsset(getAssets(), "font/atari.ttf"));
+		((Button) findViewById(R.id.hard)).setTypeface(Typeface.createFromAsset(getAssets(), "font/atari.ttf"));
+		
 		final boolean isNPC = getIntent().getExtras().getBoolean("isNPC");
 		final int dificulty = getIntent().getExtras().getInt("dificulty");
 		final int winner = getIntent().getExtras().getInt("winner");
 		
 		Builder builder = new AlertDialog.Builder(GameOverActivity.this);
-		builder.setTitle(String.format("Player %d wins!", winner))
-				.setMessage("Play again?")
-				.setPositiveButton("Yes!", new OnClickListener() {
+		builder.setTitle(String.format(getString(R.string.player_wins), winner))
+				.setMessage(R.string.play_again)
+				.setPositiveButton(R.string.yes, new OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
 						Intent intent = new Intent(GameOverActivity.this, PongActivity.class);
@@ -34,7 +43,7 @@ public class GameOverActivity extends Activity {
 						GameOverActivity.this.finish();
 					}
 				})
-				.setNegativeButton("No", new OnClickListener() {
+				.setNegativeButton(R.string.no, new OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
 						GameOverActivity.this.finish();

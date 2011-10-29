@@ -18,6 +18,7 @@ import org.anddev.andengine.opengl.texture.TextureOptions;
 import org.anddev.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlas;
 import org.anddev.andengine.ui.activity.BaseGameActivity;
 
+import com.beyondweb.pong.R;
 import com.beyondweb.pong.handlers.BordersCollisionHandler;
 import com.beyondweb.pong.handlers.NPCController;
 import com.beyondweb.pong.handlers.PlayerCollisionHandler;
@@ -32,6 +33,7 @@ import com.beyondweb.pong.model.StadiumBuilder;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.Display;
+import android.widget.Toast;
 
 
 public class PongActivity extends BaseGameActivity {
@@ -59,7 +61,8 @@ public class PongActivity extends BaseGameActivity {
 	    try {
 			engine.setTouchController(new MultiTouchController());
 		} catch (MultiTouchException e) {
-			e.printStackTrace();
+			Toast.makeText(this, R.string.not_support_multitouch, Toast.LENGTH_SHORT).show();
+			finish();
 		}
 		return engine;
 	}
