@@ -5,22 +5,28 @@ import org.anddev.andengine.entity.scene.Scene;
 import org.anddev.andengine.entity.text.ChangeableText;
 import org.anddev.andengine.opengl.font.Font;
 
-
+import android.content.Intent;
 import android.view.Display;
+
+import com.beyondweb.pong.activities.GameOverActivity;
+import com.beyondweb.pong.activities.PongActivity;
 
 
 public class ScoreBoard {
 
+	private static final int MAX_POINTS = 9;
 	private Player player1;
 	private Player player2;
 	
 	private ChangeableText player1ScoreText;
 	private ChangeableText player2ScoreText;
 	private Sound scoreSound;
+	private final PongActivity activity;
 
-	public ScoreBoard(Player player1, Player player2, Display display, Font font) {
+	public ScoreBoard(Player player1, Player player2, Display display, Font font, PongActivity activity) {
 		this.player1 = player1;
 		this.player2 = player2;
+		this.activity = activity;
 		int padding = display.getWidth() / 80;
 		player1ScoreText = new ChangeableText(display.getWidth() / 2 + (font.getLineHeight() * 10) / 20 + padding, padding, font, "0");
 		player2ScoreText = new ChangeableText(display.getWidth() / 2 - (font.getLineHeight() * 30) / 20, padding, font, "0");
@@ -28,14 +34,14 @@ public class ScoreBoard {
 	
 	public void playerOneGoal() {
 		player1.increaseScore();
-		if (player1.getScore() > 9) gameOver();
+		if (player1.getScore() > MAX_POINTS) gameOver(1);
 		else player1ScoreText.setText("" + player1.getScore());
 		
 	}
 	
 	public void playerTwoGoal() {
 		player2.increaseScore();
-		if (player2.getScore() > 9) gameOver();
+		if (player2.getScore() > MAX_POINTS) gameOver(2);
 		else player2ScoreText.setText("" + player2.getScore());
 	}
 
@@ -54,10 +60,17 @@ public class ScoreBoard {
 		}
 	}
 	
-	private void gameOver() {
+	private void gameOver(int winner) {
 		player1.resetScore();
 		player2.resetScore();
 		player1ScoreText.setText("" + player1.getScore());
 		player2ScoreText.setText("" + player2.getScore());
+		
+		Intent intent = new Intent(activity, GameOverActivity.class);
+		intent.putExtra("isNPC", activity.getIntent().getExtras().getBoolean("isNPC"));
+		intent.putExtra("dificulty", activity.getIntent().getExtras().getInt("dificulty"));
+		intent.putExtra("winner", winner);
+		activity.startActivity(intent);
+		activity.finish();
 	}
 }

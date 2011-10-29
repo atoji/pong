@@ -61,7 +61,6 @@ public class PongActivity extends BaseGameActivity {
 		} catch (MultiTouchException e) {
 			e.printStackTrace();
 		}
-	    
 		return engine;
 	}
 
@@ -101,7 +100,7 @@ public class PongActivity extends BaseGameActivity {
         player2 = new Player2(display);
         player2.attachTo(scene);
         
-        scoreBoard = new ScoreBoard(player1, player2, display, atariFont);
+        scoreBoard = new ScoreBoard(player1, player2, display, atariFont, this);
         scoreBoard.setScoreSound(scoreSound);
         scoreBoard.attachTo(scene);
         
