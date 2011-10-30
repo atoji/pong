@@ -5,10 +5,10 @@ import org.anddev.andengine.entity.scene.Scene;
 import org.anddev.andengine.entity.text.ChangeableText;
 import org.anddev.andengine.opengl.font.Font;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.view.Display;
 
-import com.beyondweb.pong.activities.GameOverActivity;
 import com.beyondweb.pong.activities.PongActivity;
 
 
@@ -66,11 +66,11 @@ public class ScoreBoard {
 		player1ScoreText.setText("" + player1.getScore());
 		player2ScoreText.setText("" + player2.getScore());
 		
-		Intent intent = new Intent(activity, GameOverActivity.class);
-		intent.putExtra("isNPC", activity.getIntent().getExtras().getBoolean("isNPC"));
-		intent.putExtra("dificulty", activity.getIntent().getExtras().getInt("dificulty"));
+		Intent intent = new Intent();
+		intent.putExtra("isNPC", activity.getIntent().getBooleanExtra("isNPC", true));
+		intent.putExtra("dificulty", activity.getIntent().getIntExtra("dificulty", 16));
 		intent.putExtra("winner", winner);
-		activity.startActivity(intent);
+		activity.setResult(Activity.RESULT_OK, intent);
 		activity.finish();
 	}
 }

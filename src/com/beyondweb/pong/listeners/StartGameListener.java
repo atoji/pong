@@ -24,7 +24,7 @@ public class StartGameListener implements OnClickListener {
 		Intent intent = new Intent(activity, PongActivity.class);
 		intent.putExtra("isNPC", isNPC);
 		intent.putExtra("dificulty", dificulty);
-		activity.startActivity(intent);
+		activity.startActivityForResult(intent, 15);
 	}
 
 }
