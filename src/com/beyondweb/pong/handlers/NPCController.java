@@ -9,21 +9,21 @@ public class NPCController implements IUpdateHandler {
 
 	private final Player player;
 	private final Ball ball;
-	private final int dificulty;
+	private final int difficulty;
 
-	public NPCController(Player player, Ball ball, int dificulty) {
+	public NPCController(Player player, Ball ball, int difficulty) {
 		this.player = player;
 		this.ball = ball;
-		this.dificulty = dificulty;
+		this.difficulty = difficulty;
 	}
 
 	@Override
 	public void onUpdate(float pSecondsElapsed) {
 		float distance = Math.abs(player.getY() + player.getHeight() / 2 - ball.getY());
 		if (player.getY() + player.getHeight() / 2 > ball.getY()) {
-			player.setPosition(player.getX(), player.getY() - distance / dificulty);
+			player.setPosition(player.getX(), player.getY() - distance / difficulty);
 		} else {
-			player.setPosition(player.getX(), player.getY() + distance / dificulty);
+			player.setPosition(player.getX(), player.getY() + distance / difficulty);
 		}
 	}
 

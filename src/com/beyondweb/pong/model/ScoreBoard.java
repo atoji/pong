@@ -68,7 +68,7 @@ public class ScoreBoard {
 		
 		Intent intent = new Intent();
 		intent.putExtra("isNPC", activity.getIntent().getBooleanExtra("isNPC", true));
-		intent.putExtra("dificulty", activity.getIntent().getIntExtra("dificulty", 16));
+		intent.putExtra("difficulty", activity.getIntent().getIntExtra("difficulty", 16));
 		intent.putExtra("winner", winner);
 		activity.setResult(Activity.RESULT_OK, intent);
 		activity.finish();

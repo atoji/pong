@@ -1,4 +1,8 @@
 package com.beyondweb.pong.activities;
+import static com.beyondweb.pong.util.Constants.DIFFICULTY_EASY;
+import static com.beyondweb.pong.util.Constants.DIFFICULTY_HARD;
+import static com.beyondweb.pong.util.Constants.DIFFICULTY_MEDIUM;
+import static com.beyondweb.pong.util.Constants.PONG_REQUEST_CODE;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -24,13 +28,13 @@ public class StartActivity extends Activity {
 		findViewById(R.id.player).setOnClickListener(new StartGameListener(this, 0, false));
 		((Button) findViewById(R.id.player)).setTypeface(Typeface.createFromAsset(getAssets(), "font/atari.ttf"));
 		
-		findViewById(R.id.easy).setOnClickListener(new StartGameListener(this, 16, true));
+		findViewById(R.id.easy).setOnClickListener(new StartGameListener(this, DIFFICULTY_EASY, true));
 		((Button) findViewById(R.id.easy)).setTypeface(Typeface.createFromAsset(getAssets(), "font/atari.ttf"));
 		
-		findViewById(R.id.medium).setOnClickListener(new StartGameListener(this, 12, true));
+		findViewById(R.id.medium).setOnClickListener(new StartGameListener(this, DIFFICULTY_MEDIUM, true));
 		((Button) findViewById(R.id.medium)).setTypeface(Typeface.createFromAsset(getAssets(), "font/atari.ttf"));
 		
-		findViewById(R.id.hard).setOnClickListener(new StartGameListener(this, 8, true));
+		findViewById(R.id.hard).setOnClickListener(new StartGameListener(this, DIFFICULTY_HARD, true));
 		((Button) findViewById(R.id.hard)).setTypeface(Typeface.createFromAsset(getAssets(), "font/atari.ttf"));
 		
 		super.onCreate(savedInstanceState);
@@ -39,10 +43,10 @@ public class StartActivity extends Activity {
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		
-		if (resultCode == RESULT_OK &&  requestCode == 15) {
+		if (resultCode == RESULT_OK &&  requestCode == PONG_REQUEST_CODE) {
 			int winner = data.getIntExtra("winner", 1);
 			final boolean isNPC = data.getBooleanExtra("isNPC", true);
-			final int dificulty = data.getIntExtra("dificulty", 16);
+			final int difficulty = data.getIntExtra("difficulty", DIFFICULTY_EASY);
 			
 			Builder builder = new AlertDialog.Builder(StartActivity.this);
 			builder.setTitle(String.format(getString(R.string.player_wins), winner))
@@ -52,8 +56,8 @@ public class StartActivity extends Activity {
 					public void onClick(DialogInterface dialog, int which) {
 						Intent intent = new Intent(StartActivity.this, PongActivity.class);
 						intent.putExtra("isNPC", isNPC);
-						intent.putExtra("dificulty", dificulty);
-						StartActivity.this.startActivityForResult(intent, 15);
+						intent.putExtra("difficulty", difficulty);
+						StartActivity.this.startActivityForResult(intent, PONG_REQUEST_CODE);
 					}
 				})
 				.setNegativeButton(R.string.no, null)

@@ -29,6 +29,7 @@ import com.beyondweb.pong.model.Player2;
 import com.beyondweb.pong.model.Player1;
 import com.beyondweb.pong.model.ScoreBoard;
 import com.beyondweb.pong.model.StadiumBuilder;
+import com.beyondweb.pong.util.Constants;
 
 import android.graphics.Color;
 import android.util.Log;
@@ -113,7 +114,7 @@ public class PongActivity extends BaseGameActivity {
         boolean isNPC = getIntent().getExtras().getBoolean("isNPC");
 		scene.setOnSceneTouchListener(new PlayerControllerTouchListener(player1, player2, display, isNPC));
 		if (isNPC) {
-			scene.registerUpdateHandler(new NPCController(player2, ball, getIntent().getExtras().getInt("dificulty")));
+			scene.registerUpdateHandler(new NPCController(player2, ball, getIntent().getIntExtra("difficulty", Constants.DIFFICULTY_EASY)));
 		}
 		scene.registerUpdateHandler(new BordersCollisionHandler(ball, display, scoreBoard));
         scene.registerUpdateHandler(new PlayerCollisionHandler(player1, player2, ball));
